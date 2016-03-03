@@ -24,14 +24,14 @@ class dnsdist ($webserver = '0.0.0.0:80', $webserver_pass = 'geheim', $control_s
   }
 
   apt::key { 'powerdns':
-    key         => '0xFD380FBB',
+    key         => 'FD380FBB',
     key_content => template('dnsdist/aptkey.erb'),
   }
 
   apt::source { 'repo.powerdns.com':
     location    => 'http://repo.powerdns.com/ubuntu',
     repos       => 'main',
-    release     => 'trusty-dnsdist-master',
+    release     => 'trusty-dnsdist-10',
     include_src => false,
     amd64_only  => true,
     require     => [Apt::Pin['dnsdist'], Apt::Key['powerdns']];

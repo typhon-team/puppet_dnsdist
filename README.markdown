@@ -40,3 +40,11 @@ Module to manage dnsdist on Debian/Ubuntu.
   }
 ```
 
+#### Configure pools
+```
+   dnsdist::addpoolrule {
+     'pool_name':
+       rules => ['local.', 'intern.', '10.in-addr.arpa', '16.172.in-addr.arpa', '17.172.in-addr.arpa'],
+       pool  => 'poolname';
+   }
+```

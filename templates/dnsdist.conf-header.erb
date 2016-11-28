@@ -1,5 +1,6 @@
-webserver("<%= webserver %>", "<%= webserver_pass %>")
-controlSocket("<%= control_socket %>")
-<% listen_addresses.each do |listen_addres| 
-  -%>addLocal("<%= listen_addres %>")
+webserver("<%= @webserver %>", "<%= @webserver_pass %>")
+controlSocket("<%= @control_socket %>")
+setServerPolicy(<%= @server_policy %>)
+<% @listen_addresses.each do |listen_address| 
+  -%>addLocal("<%= listen_address %>")
 <% end -%>

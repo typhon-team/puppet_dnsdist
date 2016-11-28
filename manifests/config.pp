@@ -11,6 +11,7 @@ class dnsdist::config (
   $webserver,
   $webserver_pass,
   $control_socket,
+  $server_policy,
   $listen_addresses
 ){
 

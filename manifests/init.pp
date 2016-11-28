@@ -33,7 +33,8 @@ class dnsdist (
   $control_socket   = $dnsdist::params::control_socket,
   $listen_addresses = $dnsdist::params::listen_addresses,
   $version          = $dnsdist::params::version,
-  $distribution     = $dnsdist::params::distribution
+  $distribution     = $dnsdist::params::distribution,
+  $server_policy    = $dnsdist::params::server_policy
 ) inherits ::dnsdist::params {
 
   include ::dnsdist::service
@@ -47,6 +48,7 @@ class dnsdist (
     webserver        => $webserver,
     webserver_pass   => $webserver_pass,
     control_socket   => $control_socket,
+    server_policy    => $server_policy,
     listen_addresses => $listen_addresses
   }
 

@@ -11,8 +11,7 @@ class dnsdist::config (
   $webserver,
   $webserver_pass,
   $control_socket,
-  $listen_addresses,
-  $distribution
+  $listen_addresses
 ){
 
   concat { "/etc/dnsdist/dnsdist.conf":

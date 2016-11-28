@@ -26,6 +26,8 @@ class dnsdist::package ($distribution = 'ubuntu'){
     key_content => template('dnsdist/aptkey.erb'),
   }
 
+  notify { "This will install ${distribution}": }
+
   case $distribution {
     'ubuntu': {
       apt::source { 'repo.powerdns.com':

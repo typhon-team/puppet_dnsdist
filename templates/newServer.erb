@@ -1,4 +1,4 @@
-newServer({address="<%= forward_adres %>", name="<%= resolver_name  -%>"<%
+newServer({address="<%= @forward_adress %>", name="<%= @resolver_name  -%>", weight ="<%= @weighting %>", <%
 if pool != '' 
   -%>, pool="<%= pool -%>"<%
 end -%>

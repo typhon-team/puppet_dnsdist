@@ -43,7 +43,6 @@ class dnsdist::package (
       }
     }
     'debian': {
-      notify { "This will install ${distribution}": }
       apt::source { 'repo.powerdns.com':
         location    => 'http://repo.powerdns.com/debian',
         repos       => 'main',

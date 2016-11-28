@@ -12,7 +12,7 @@
 #   $webserver = '0.0.0.0:80',
 #   $webserver_pass = 'geheim'
 #   $control_socket = '127.0.0.1'
-#   $listen_addresess = '0.0.0.0'
+#   $listen_addresses = '0.0.0.0'
 #
 # Requires:
 #   concat
@@ -22,10 +22,10 @@
 #
 #   class { 'dnsdist':
 #    webserver        => '192.168.1.1:80',
-#    listen_addresess => [ '192.168.1.1' ];
+#    listen_addresses => [ '192.168.1.1' ];
 #  }
 #
-class dnsdist ($webserver = '0.0.0.0:80', $webserver_pass = 'geheim', $control_socket = '127.0.0.1', $listen_addresess = '0.0.0.0') {
+class dnsdist ($webserver = '0.0.0.0:80', $webserver_pass = 'geheim', $control_socket = '127.0.0.1', $listen_addresses = '0.0.0.0') {
   apt::pin { 'dnsdist':
     origin   => 'repo.powerdns.com',
     priority => '600'

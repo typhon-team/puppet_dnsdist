@@ -13,7 +13,7 @@ Module to manage dnsdist on Debian/Ubuntu.
 ```
   class { 'dnsdist':
     webserver        => '192.168.1.1:80',
-    listen_addresess => [ '192.168.1.1' ];
+    listen_addresses => [ '192.168.1.1' ];
   }
 ```
 #### Configure backend servers

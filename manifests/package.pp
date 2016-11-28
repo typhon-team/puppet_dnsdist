@@ -14,7 +14,11 @@
 #  }
 #
 
-class dnsdist::package ($distribution = 'ubuntu'){
+class dnsdist::package (
+  $distribution,
+  $version
+
+){
 
   apt::pin { 'dnsdist':
     origin   => 'repo.powerdns.com',
@@ -43,7 +47,7 @@ class dnsdist::package ($distribution = 'ubuntu'){
       apt::source { 'repo.powerdns.com':
         location    => 'http://repo.powerdns.com/debian',
         repos       => 'main',
-        release     => 'jessie',
+        release     => "jessie-dnsdist-${version}",
         include_src => false,
         require     => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
       }

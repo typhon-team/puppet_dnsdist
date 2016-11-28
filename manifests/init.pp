@@ -32,13 +32,15 @@ class dnsdist (
   $webserver_pass   = $dnsdist::params::webserver_pass,
   $control_socket   = $dnsdist::params::control_socket,
   $listen_addresses = $dnsdist::params::listen_addresses,
+  $version          = $dnsdist::params::version,
   $distribution     = $dnsdist::params::distribution
 ) inherits ::dnsdist::params {
 
   include ::dnsdist::service
 
   class { '::dnsdist::package':
-    distribution => $distribution
+    distribution => $distribution,
+    version      => $version
   }
 
   class { '::dnsdist::config':

@@ -1,3 +1,3 @@
-<% @name_servers.each do | name_server | -%>
-newServer({address="<%= name_server[:forward_address] %>", name="<%= name_server[:resolver_name] %>", weight ="<%= name_server[:weighting] %>"})
+<% @newservers.each do | newserver | -%>
+newServer({address="<%= newserver[:forward_address] %>", name="<%= newserver[:resolver_name] %>", weight ="<%= newserver[:weighting] %>"})
 <% end -%>

@@ -6,13 +6,14 @@
 #   Michiel Piscaer <michiel@piscaer.com>
 #
 # Version
-#   0.1   Initial release
+#   0.2  Refactored release with debian distribution support 
 #
 # Parameters:
-#   $webserver = '0.0.0.0:80',
-#   $webserver_pass = 'geheim'
-#   $control_socket = '127.0.0.1'
+#   $webserver        = '0.0.0.0:80',
+#   $webserver_pass   = 'geheim'
+#   $control_socket   = '127.0.0.1'
 #   $listen_addresses = '0.0.0.0'
+#   $distribution     = 'debian'
 #
 # Requires:
 #   concat
@@ -25,62 +26,26 @@
 #    listen_addresses => [ '192.168.1.1' ];
 #  }
 #
-class dnsdist ($webserver = '0.0.0.0:80', $webserver_pass = 'geheim', $control_socket = '127.0.0.1', $listen_addresses = '0.0.0.0') {
-  apt::pin { 'dnsdist':
-    origin   => 'repo.powerdns.com',
-    priority => '600'
+
+class dnsdist (
+  $webserver        = $dnsdist::params::webserver,
+  $webserver_pass   = $dnsdist::params::webserver_pass,
+  $control_socket   = $dnsdist::params::control_socket,
+  $listen_addresses = $dnsdist::params::listen_addresses,
+  $distribution     = $dnsdist::params::distribution
+) inherits ::dnsdist::params {
+
+  include ::dnsdist::service
+
+  class { '::dnsdist::package':
+    distribution => $distribution
   }
 
-  apt::key { 'powerdns':
-    key         => 'FD380FBB',
-    key_content => template('dnsdist/aptkey.erb'),
+  class { '::dnsdist::config':
+    webserver        => $webserver,
+    webserver_pass   => $webserver_pass,
+    control_socket   => $control_socket,
+    listen_addresses => $listen_addresses
   }
 
-  apt::source { 'repo.powerdns.com':
-    location    => 'http://repo.powerdns.com/ubuntu',
-    repos       => 'main',
-    release     => 'trusty-dnsdist-10',
-    include_src => false,
-    amd64_only  => true,
-    require     => [Apt::Pin['dnsdist'], Apt::Key['powerdns']];
-  }
-
-  package { 'dnsdist':
-    ensure  => present,
-    require => [Apt::Source['repo.powerdns.com']];
-  }
-
-  concat { "/etc/dnsdist/dnsdist.conf":
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    notify  => Service['dnsdist'],
-    require => [Package['dnsdist']]
-  }
-
-  concat::fragment { "global-header":
-    target  => "/etc/dnsdist/dnsdist.conf",
-    content => template('dnsdist/dnsdist.conf-header.erb'),
-    order   => '10';
-  }
-
-  concat::fragment { "acl-header":
-    target  => "/etc/dnsdist/dnsdist.conf",
-    content => 'setACL({',
-    order   => '40';
-  }
-
-  concat::fragment { "acl-footer":
-    target  => "/etc/dnsdist/dnsdist.conf",
-    content => "})\n",
-    order   => '49';
-  }
-
-  service { 'dnsdist':
-    ensure     => running,
-    enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
-    require    => [Concat['/etc/dnsdist/dnsdist.conf']]
-  }
 }

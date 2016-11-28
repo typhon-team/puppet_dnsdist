@@ -3,10 +3,10 @@
 #  Manages the pools of dnsdist
 #
 # Author
-#   Michiel Piscaer <michiel@piscaer.com>
+#   Hetzner ZA <kernels@hetzner.co.za>
 #
 # Version
-#   0.1   Initial release
+#   0.2   Initial release
 #
 # Parameters:
 #   $rules

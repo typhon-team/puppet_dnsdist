@@ -3,7 +3,7 @@
 # This class installs and manages dnsdist
 #
 # Author
-#   Michiel Piscaer <michiel@piscaer.com>
+#   Hetzner ZA <kernels@hetzner.co.za>
 #
 # Version
 #   0.2  Refactored release with debian distribution support 

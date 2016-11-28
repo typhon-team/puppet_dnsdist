@@ -3,10 +3,7 @@
 #  Manages the ACL of dnsdist
 #
 # Author
-#   Michiel Piscaer <michiel@piscaer.com>
-#
-# Version
-#   0.1   Initial release
+#   Hetzner ZA <kernels@hetzner.co.za>
 #
 # Parameters:
 #   $networkadres = $title

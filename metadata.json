@@ -1,23 +1,30 @@
 {
-  "name": "mpiscaer-dnsdist",
+  "name": "hetznerza-dnsdist",
   "version": "0.2.0",
-  "author": "Michiel Piscaer",
+  "author": "Hetzner ZA",
   "license": "na",
   "summary": "dnsdist",
-  "source": "https://github.com/mpiscaer/puppet_dnsdist",
+  "source": "https://github.com/hetznerZA/puppet_dnsdist.git",
 
   "dependencies": [
     { "name": "puppetlabs/concat", "version_requirement": ">=1.2.0" },
     { "name": "puppetlabs/apt", "version_requirement": ">=0.0.4" }
   ],
-  "project_page": "https://github.com/mpiscaer/puppet_dnsdist",
+  "project_page": "https://github.com/hetznerZA/puppet_dnsdist.git",
   "operatingsystem_support": [
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "14.04"
       ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "Jessie"
+      ]
     }
+
   ],
   "Tag": [
     "dnsdist"

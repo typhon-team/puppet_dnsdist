@@ -16,7 +16,7 @@
 #     '192.168.1.0/24']:
 #   }
 #
-define dnsdist::acl ($networkadres = $title) {
+define dnsdist::acl ($networkaddress = $title) {
   concat::fragment { "acl-${title}":
     target  => "/etc/dnsdist/dnsdist.conf",
     content => template('dnsdist/ACL.erb'),

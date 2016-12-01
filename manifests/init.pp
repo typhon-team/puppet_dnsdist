@@ -34,10 +34,15 @@ class dnsdist (
   $listen_addresses = $dnsdist::params::listen_addresses,
   $version          = $dnsdist::params::version,
   $distribution     = $dnsdist::params::distribution,
-  $server_policy    = $dnsdist::params::server_policy
+  $server_enabled   = $dnsdist::params::service_enabled,
+  $server_ensure    = $dnsdist::params::service_ensure,
+  $server_policy    = $dnsdist::params::server_policy,
 ) inherits ::dnsdist::params {
 
-  include ::dnsdist::service
+  class { '::dnsdist::service':
+    enabled => $server_enabled,
+    ensure  => $server_ensure
+  }
 
   class { '::dnsdist::package':
     distribution => $distribution,

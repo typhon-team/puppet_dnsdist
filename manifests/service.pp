@@ -6,11 +6,22 @@ class dnsdist::service (
   $enabled,
   $ensure
 ){
-  service { 'dnsdist':
-    ensure     => $ensure,
-    enable     => $enabled,
-    hasstatus  => true,
-    hasrestart => true,
-    require    => Class['dnsdist::config']
+
+  if $ensure {
+    service { 'dnsdist':
+      ensure     => $ensure,
+      enable     => $enabled,
+      hasstatus  => true,
+      hasrestart => true,
+      require    => Class['dnsdist::config']
+    }
+  } else {
+    service { 'dnsdist':
+      enable     => $enabled,
+      hasstatus  => true,
+      hasrestart => true,
+      require    => Class['dnsdist::config']
+    }
   }
+
 }

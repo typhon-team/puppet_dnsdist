@@ -34,8 +34,8 @@ class dnsdist (
   $listen_addresses = $dnsdist::params::listen_addresses,
   $version          = $dnsdist::params::version,
   $distribution     = $dnsdist::params::distribution,
-  $service_enabled   = $dnsdist::params::service_enabled,
-  $service_ensure    = $dnsdist::params::service_ensure,
+  $service_enabled  = $dnsdist::params::service_enabled,
+  $service_ensure   = $dnsdist::params::service_ensure,
   $server_policy    = $dnsdist::params::server_policy,
 ) inherits ::dnsdist::params {
 

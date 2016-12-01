@@ -3,8 +3,8 @@
 # This class manages the dnsdist service
 
 class dnsdist::service (
-  $enabled = true,
-  $ensure  = true
+  $enabled,
+  $ensure
 ){
   service { 'dnsdist':
     ensure     => $ensure,

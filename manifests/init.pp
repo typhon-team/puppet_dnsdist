@@ -32,6 +32,7 @@ class dnsdist (
   $webserver_pass   = $dnsdist::params::webserver_pass,
   $control_socket   = $dnsdist::params::control_socket,
   $listen_addresses = $dnsdist::params::listen_addresses,
+  $number_of_cpus   = $dnsdist::params::number_of_cpus,
   $version          = $dnsdist::params::version,
   $distribution     = $dnsdist::params::distribution,
   $service_enabled  = $dnsdist::params::service_enabled,

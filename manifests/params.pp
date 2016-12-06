@@ -14,6 +14,9 @@ class dnsdist::params {
   $control_socket   = '127.0.0.1'
   $distribution     = 'ubuntu'
   $listen_addresses = '127.0.0.1'
+  $number_of_cpus   = 1
+  $service_enabled  = true
+  $service_ensure   = true
   $server_policy    = 'firstAvailable'
   $version          = 10
   $webserver        = '127.0.0.1:80'

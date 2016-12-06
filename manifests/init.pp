@@ -32,12 +32,18 @@ class dnsdist (
   $webserver_pass   = $dnsdist::params::webserver_pass,
   $control_socket   = $dnsdist::params::control_socket,
   $listen_addresses = $dnsdist::params::listen_addresses,
+  $number_of_cpus   = $dnsdist::params::number_of_cpus,
   $version          = $dnsdist::params::version,
   $distribution     = $dnsdist::params::distribution,
-  $server_policy    = $dnsdist::params::server_policy
+  $service_enabled  = $dnsdist::params::service_enabled,
+  $service_ensure   = $dnsdist::params::service_ensure,
+  $server_policy    = $dnsdist::params::server_policy,
 ) inherits ::dnsdist::params {
 
-  include ::dnsdist::service
+  class { '::dnsdist::service':
+    enabled => $service_enabled,
+    ensure  => $service_ensure
+  }
 
   class { '::dnsdist::package':
     distribution => $distribution,

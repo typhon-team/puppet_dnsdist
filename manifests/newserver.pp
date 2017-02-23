@@ -22,11 +22,11 @@
 #       resolver_name = 'ns1';
 #   }
 #
-define dnsdist::newserver
+define dnsdist::newserver($newservers)
 {
-  concat::fragment { "newservers":
-    target  => "/etc/dnsdist/dnsdist.conf",
+  concat::fragment { 'newservers':
+    target  => '/etc/dnsdist/dnsdist.conf',
     content => template('dnsdist/newServers.erb'),
-    order   => "20"
+    order   => '20'
   }
 }

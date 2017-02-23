@@ -34,12 +34,14 @@ class dnsdist::package (
   case $distribution {
     'ubuntu': {
       apt::source { 'repo.powerdns.com':
-        location    => 'http://repo.powerdns.com/ubuntu',
-        repos       => 'main',
-        release     => 'trusty-dnsdist-10',
-        include_src => false,
-        amd64_only  => true,
-        require     => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
+        location   => 'http://repo.powerdns.com/ubuntu',
+        repos      => 'main',
+        release    => 'trusty-dnsdist-10',
+        include    => {
+          src => false,
+        },
+        amd64_only => true,
+        require    => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
       }
     }
     'debian': {

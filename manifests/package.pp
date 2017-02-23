@@ -26,8 +26,8 @@ class dnsdist::package (
   }
 
   apt::key { 'powerdns':
-    key         => '9FAAA5577E8FCF62093D036C1B0C6205FD380FBB',
-    key_content => template('dnsdist/aptkey.erb'),
+    id      => '9FAAA5577E8FCF62093D036C1B0C6205FD380FBB',
+    content => template('dnsdist/aptkey.erb'),
   }
 
 

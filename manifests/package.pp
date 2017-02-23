@@ -49,7 +49,9 @@ class dnsdist::package (
         location    => 'http://repo.powerdns.com/debian',
         repos       => 'main',
         release     => "jessie-dnsdist-${version}",
-        include_src => false,
+        include     => {
+          src => false,
+        },
         require     => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
       }
     }

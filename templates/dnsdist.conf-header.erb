@@ -1,9 +1,6 @@
 webserver("<%= @webserver %>", "<%= @webserver_pass %>")
 controlSocket("<%= @control_socket %>")
 setServerPolicy(<%= @server_policy %>)
-# NUMBER OF CPUS
-#<%= @number_of_cpus %>
-#
 <% @number_of_cpus.to_i.times do | i |-%>
 <% @listen_addresses.each do |listen_address| 
   -%>addLocal("<%= listen_address %>:53",true,true)

@@ -55,7 +55,8 @@ class dnsdist (
     webserver_pass   => $webserver_pass,
     control_socket   => $control_socket,
     server_policy    => $server_policy,
-    listen_addresses => $listen_addresses
+    listen_addresses => $listen_addresses,
+    number_of_cpus   => $$number_of_cpus
   }
 
 }

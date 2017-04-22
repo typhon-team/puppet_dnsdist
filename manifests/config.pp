@@ -12,7 +12,8 @@ class dnsdist::config (
   $webserver_pass,
   $control_socket,
   $server_policy,
-  $listen_addresses
+  $listen_addresses,
+  $number_of_cpus
 ){
 
   concat { "/etc/dnsdist/dnsdist.conf":

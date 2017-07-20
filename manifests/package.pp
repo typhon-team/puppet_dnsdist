@@ -46,13 +46,13 @@ class dnsdist::package (
     }
     'debian': {
       apt::source { 'repo.powerdns.com':
-        location    => 'http://repo.powerdns.com/debian',
-        repos       => 'main',
-        release     => "jessie-dnsdist-${version}",
-        include     => {
+        location => 'http://repo.powerdns.com/debian',
+        repos    => 'main',
+        release  => "jessie-dnsdist-${version}",
+        include  => {
           src => false,
         },
-        require     => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
+        require => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
       }
     }
   }

@@ -52,7 +52,7 @@ class dnsdist::package (
         include  => {
           src => false,
         },
-        require => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
+        require  => [Apt::Pin['dnsdist'], Apt::Key['powerdns']]
       }
     }
   }

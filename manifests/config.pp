@@ -13,10 +13,11 @@ class dnsdist::config (
   $control_socket,
   $server_policy,
   $listen_addresses,
-  $number_of_cpus
+  $number_of_cpus,
+  $version
 ){
 
-  concat { "/etc/dnsdist/dnsdist.conf":
+  concat { '/etc/dnsdist/dnsdist.conf':
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -24,20 +25,20 @@ class dnsdist::config (
     require => [Package['dnsdist']]
   }
 
-  concat::fragment { "global-header":
-    target  => "/etc/dnsdist/dnsdist.conf",
+  concat::fragment { 'global-header':
+    target  => '/etc/dnsdist/dnsdist.conf',
     content => template('dnsdist/dnsdist.conf-header.erb'),
     order   => '10';
   }
 
-  concat::fragment { "acl-header":
-    target  => "/etc/dnsdist/dnsdist.conf",
+  concat::fragment { 'acl-header':
+    target  => '/etc/dnsdist/dnsdist.conf',
     content => 'setACL({',
     order   => '40';
   }
 
-  concat::fragment { "acl-footer":
-    target  => "/etc/dnsdist/dnsdist.conf",
+  concat::fragment { 'acl-footer':
+    target  => '/etc/dnsdist/dnsdist.conf',
     content => "})\n",
     order   => '49';
   }

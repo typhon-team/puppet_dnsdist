@@ -2,7 +2,11 @@ webserver("<%= @webserver %>", "<%= @webserver_pass %>")
 controlSocket("<%= @control_socket %>")
 setServerPolicy(<%= @server_policy %>)
 <% @number_of_cpus.to_i.times do | i |-%>
-<% @listen_addresses.each do |listen_address| 
-  -%>addLocal("<%= listen_address %>:53",true,true)
+<% @listen_addresses.each do |listen_address| -%>
+<%  if @version == 12 -%>
+addLocal("<%= listen_address %>:53",{ doTCP=true, reusePort=true })
+<% else -%>
+addLocal("<%= listen_address %>:53",true,true)
+<% end -%>
 <% end -%>
 <% end -%>

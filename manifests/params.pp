@@ -21,5 +21,5 @@ class dnsdist::params {
   $version          = 10
   $webserver        = '127.0.0.1:80'
   $webserver_pass   = 'geheim'
-
+  $manage_repo      = true
 }

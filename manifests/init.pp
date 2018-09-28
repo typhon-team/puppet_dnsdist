@@ -6,7 +6,7 @@
 #   Hetzner ZA <kernels@hetzner.co.za>
 #
 # Version
-#   0.2  Refactored release with debian distribution support 
+#   0.2  Refactored release with debian distribution support
 #
 # Parameters:
 #   $webserver        = '0.0.0.0:80',
@@ -38,6 +38,7 @@ class dnsdist (
   $service_enabled  = $dnsdist::params::service_enabled,
   $service_ensure   = $dnsdist::params::service_ensure,
   $server_policy    = $dnsdist::params::server_policy,
+  $manage_repo      = $dnsdist::params::manage_repo,
 ) inherits ::dnsdist::params {
 
   class { '::dnsdist::service':
@@ -46,6 +47,7 @@ class dnsdist (
   }
 
   class { '::dnsdist::package':
+    manage_repo  => $manage_repo,
     distribution => $distribution,
     version      => $version
   }

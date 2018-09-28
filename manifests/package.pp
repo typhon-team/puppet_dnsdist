@@ -58,11 +58,14 @@ class dnsdist::package (
         }
       }
     }
-  }
-
-  package { 'dnsdist':
-    ensure  => present,
-    require => [Apt::Source['repo.powerdns.com']];
+    package { 'dnsdist':
+      ensure  => present,
+      require => [Apt::Source['repo.powerdns.com']];
+    }
+  } else {
+    package { 'dnsdist':
+      ensure  => present,
+    }
   }
 
 }

@@ -24,7 +24,7 @@
 #
 define dnsdist::newserver($newservers)
 {
-  concat::fragment { 'newservers':
+  concat::fragment { "newservers-${newservers[0]}":
     target  => '/etc/dnsdist/dnsdist.conf',
     content => template('dnsdist/newServers.erb'),
     order   => '20'

@@ -8,7 +8,7 @@
 
 
 class dnsdist::config (
-  $api_key,
+  $api_key = 'changeme',
   $webserver,
   $webserver_pass,
   $control_socket,

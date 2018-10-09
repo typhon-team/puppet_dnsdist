@@ -22,4 +22,5 @@ class dnsdist::params {
   $webserver        = '127.0.0.1:80'
   $webserver_pass   = 'geheim'
   $manage_repo      = true
+  $api_key          = 'test'
 }

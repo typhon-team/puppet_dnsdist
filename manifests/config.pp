@@ -8,6 +8,7 @@
 
 
 class dnsdist::config (
+  $api_key,
   $webserver,
   $webserver_pass,
   $control_socket,

@@ -54,6 +54,7 @@ class dnsdist (
   }
 
   class { '::dnsdist::config':
+    api_key          => $api_key, 
     webserver        => $webserver,
     webserver_pass   => $webserver_pass,
     control_socket   => $control_socket,

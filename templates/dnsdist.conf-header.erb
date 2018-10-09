@@ -1,4 +1,4 @@
-<% if api_key != '' %>
+<% if @api_key != '' %>
 webserver("<%= @webserver %>", "<%= @webserver_pass %>", "<% @api_key %>")
 <% else %>
 webserver("<%= @webserver %>", "<%= @webserver_pass %>")

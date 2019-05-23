@@ -1,3 +1,7 @@
 <% @newservers.each do | newserver | -%>
+    <%- if newserver.has_key?('order') -%>
+newServer({address="<%= newserver['forward_address'] %>", name="<%= newserver['resolver_name'] %>", weight ="<%= newserver['weighting'] %>", order = "<%= newserver['order'] %>"})
+    <%- else -%>
 newServer({address="<%= newserver['forward_address'] %>", name="<%= newserver['resolver_name'] %>", weight ="<%= newserver['weighting'] %>"})
+    <%- end -%>
 <% end -%>
